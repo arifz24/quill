@@ -117,6 +117,12 @@ class BaseTheme extends Theme {
       className.split(/\s+/).forEach((name) => {
         if (!name.startsWith('ql-')) return;
         name = name.slice('ql-'.length);
+  
+        // Check if the button already has text content
+        if (button.textContent && button.textContent.trim() !== '') {
+          return; // Skip if button has text content
+        }
+  
         if (icons[name] == null) return;
         if (name === 'direction') {
           // @ts-expect-error
